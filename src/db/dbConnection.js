@@ -5,7 +5,8 @@ const url = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${proce
 const options = {
   useCreateIndex: true,
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 };
 
 mongoose
