@@ -82,5 +82,31 @@ module.exports = {
       });
     }
   },
-  async delProd(req, res, next) {}
+  async setSale(req, res, next) {
+    try {
+      let product = await Product.findById(req.params.id);
+      product.sale = true;
+      product.oldPrice = product.price;
+      product.price = req.body.price;
+      await product.save();
+
+      res.status(200).json(product);
+    } catch (err) {
+      next({
+        status: 500,
+        message: 'failed to set sale'
+      });
+    }
+  },
+  async delProd(req, res, next) {
+    try {
+      const product = await Product.deleteOne({ _id: req.params.id });
+      res.status(200).json(product);
+    } catch (err) {
+      next({
+        status: 500,
+        message: 'failed to delete product'
+      });
+    }
+  }
 };

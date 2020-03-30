@@ -33,6 +33,11 @@ router.post('/', productCtrl.addProd);
 // @access    private
 router.put('/:id', productCtrl.editProd);
 
+// @route   PUT /product/sale/:id
+// @desc      sale product
+// @access    private
+router.put('/sale/:id', productCtrl.setSale);
+
 // @route     DELETE /product/:id
 // @desc      Deletes one product
 // @access    private
