@@ -3,14 +3,15 @@ const { Schema, model } = require('mongoose');
 const schema = {
   items: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'product'
+      product: {
+        type: Schema.Types.ObjectId,
+        ref: 'product'
+      },
+      quantity: {
+        type: Number
+      }
     }
-  ],
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'user'
-  }
+  ]
 };
 
 const cart_schema = new Schema(schema, { collection: 'cart' });
